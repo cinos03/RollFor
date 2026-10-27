@@ -25,16 +25,19 @@ function M.new( api )
   local function is_master_looter()
     if not api.IsInGroup() then return false end
 
-    local loot_method, id = api.GetLootMethod()
-    if loot_method ~= "master" or not id then return false end
-    if id == 0 then return true end
+    local loot_method, party_id, raid_id = api.GetLootMethod()
+    if loot_method ~= "master" then return false end
 
     if api.IsInRaid() then
-      local name = api.GetRaidRosterInfo( id )
+      if not raid_id then return false end
+      local name = api.GetRaidRosterInfo( raid_id )
       return name == get_name()
     end
 
-    return api.UnitName( "party" .. id ) == get_name()
+    if party_id == 0 then return true end
+    if not party_id then return false end
+
+    return api.UnitName( "party" .. party_id ) == get_name()
   end
 
   local function is_leader()

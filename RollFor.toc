@@ -7,7 +7,9 @@
 ## SavedVariablesPerCharacter: RollForCharDb
 
 libs/bcc/LibStub/LibStub.lua
-libs/bcc/Libs.xml
+libs/bcc/CallbackHandler-1.0/CallbackHandler-1.0.lua
+libs/bcc/AceTimer-3.0/AceTimer-3.0.lua
+libs/bcc/LibDeflate/LibDeflate.lua
 
 itemnotes\MurderMittens.lua
 itemnotes\User.lua

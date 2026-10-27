@@ -285,7 +285,11 @@ function M.fetch_item_link_and_quality( item_id )
     return
   end
 
-  return string.format( "%s|H%s|h[%s]|h|r", M.api.ITEM_QUALITY_COLORS[ quality or 0 ].hex, details, name )
+  if M.vanilla then
+    return string.format( "%s|H%s|h[%s]|h|r", M.api.ITEM_QUALITY_COLORS[ quality or 0 ].hex, details, name )
+  end
+
+  return details
 end
 
 function M.set_game_tooltip_with_item_id( item_id )
